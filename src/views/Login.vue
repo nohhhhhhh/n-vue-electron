@@ -3,7 +3,6 @@
   <v-app
       id="login-home"
       dark>
-
     <v-content>
       <transition mode="out-in">
         <router-view/>
