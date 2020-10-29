@@ -1,17 +1,18 @@
 <template>
-  <transition mode="out-in">
-    <router-view/>
-  </transition>
+  <v-app id="app" dark>
+    <core-drawer />
+    <v-content>
+      <transition mode="out-in">
+        <router-view/>
+      </transition>
+    </v-content>
+  </v-app>
 </template>
 
-<style lang="scss">
-@import "../src/assets/scss/index";
-
-/* Remove in 1.2 */
-.v-datatable thead th.column.sortable i {
-  vertical-align: unset;
-}
-</style>
 <script>
-
+export default {
+}
 </script>
+
+<style>
+</style>
