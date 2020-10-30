@@ -29,7 +29,24 @@
 
           <v-flex md12 sm12>
             <material-card color="warning" type="Line">
+              <v-card-title class="display-1">
+                <!--<span class="headline">Menu</span>-->
               <h1 class="title font-weight-thin">Daily StackOverflow Visits</h1>
+              <v-spacer></v-spacer>
+              <v-menu bottom left>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn dark icon v-bind="attrs" v-on="on">
+                    <v-icon>mdi-dots-vertical</v-icon>
+                  </v-btn>
+                </template>
+
+                <v-list>
+                  <v-list-item v-for="(item, i) in menu" :key="i">
+                    <v-list-item-title><v-icon small @click="settingItem(item.id)">{{item.icon}}</v-icon></v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+              </v-card-title>
 
               <!--<p class="category d-inline-flex font-weight-light" id="ddd" v-bind:style="{height: (item.h*60)+'px'}">-->
                 <line-chart v-if="item.type == 'lineChart'" :chart-data="item.data" :options="lineChartOption" :ref="'chart'+item.i"></line-chart>
@@ -47,6 +64,38 @@
           </v-flex>
       </grid-item>
     </grid-layout>
+
+    <v-row justify="center">
+      <v-dialog v-model="dialog" persistent max-width="290">
+        <v-card>
+          <v-card-title class="headline">
+            <v-icon>mdi-delete-empty</v-icon>
+          </v-card-title>
+          <v-card-text>Item 을 삭제 하시겠습니까?</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+                color="error"
+                rounded
+                small
+                text
+                @click="dialog = false"
+            >
+              취소
+            </v-btn>
+            <v-btn
+                color="success"
+                rounded
+                small
+                text
+                @click="dialog = false"
+            >
+              확인
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
   </div>
 </template>
 
@@ -67,6 +116,13 @@ export default {
   data () {
     return {
       colNum: 12,
+      dialog:false,
+      /*todo : localDb or Setting file*/
+      menu: [
+        {id:'s',title:'test', icon:"mdi-wrench"},
+        {id:'d',title:'delete', icon:"mdi-delete-empty"},
+      ],
+      /*todo : localDb*/
       itemList: [
         {
           "socketConnect": "",
@@ -157,6 +213,15 @@ export default {
     layoutCreatedEvent: function (newLayout) {
       console.log('Created layout: ', newLayout)
       setInterval(() => this.createTestData(), 1000);
+    },
+    settingItem(type){
+
+      if(type=="s"){
+        alert("a");
+      }else{
+        this.dialog=true;
+      }
+
     },
     createTestData(){
       console.log("L:")
