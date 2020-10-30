@@ -1,22 +1,13 @@
 <template>
-  <material-card
-    v-bind="$attrs"
-    class="v-card--material-chart"
-    v-on="$listeners"
-  >
+  <material-card v-bind="$attrs" class="v-card--material" v-on="$listeners">
     <slot/>
-
-    <slot
-      slot="actions"
-      name="actions"
-    />
+    <slot slot="actions" name="actions"/>
   </material-card>
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
-
   props: {
     data: {
       type: Object,
