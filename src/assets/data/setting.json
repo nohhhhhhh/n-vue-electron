@@ -1,0 +1,45 @@
+[
+  {
+    "socketConnect": "",
+    "socketUrl" : "http://localhost:8080/commonSocket",
+    "x": 0,
+    "y": 0,
+    "w": 4,
+    "h": 2,
+    "minW": 4,
+    "i": "0",
+    "type": "lineChart",
+    "data":{
+      "datasets": [
+        {
+          "label": "usl",
+          "backgroundColor": "transparent",
+          "borderColor": "#ff9948",
+          "pointRadius": 0,
+          "data": []
+        },
+        {
+          "label": "data",
+          "backgroundColor": "transparent",
+          "borderColor": "rgb(26,111,168)",
+          "pointBackgroundColor": "rgb(26,111,168)",
+          "data": []
+        },
+        {
+          "label": "cl",
+          "backgroundColor": "transparent",
+          "borderColor": "#606060",
+          "pointRadius": 0,
+          "data": []
+        },
+        {
+          "label": "lsl",
+          "backgroundColor": "transparent",
+          "borderColor": "#ff9948",
+          "pointRadius": 0,
+          "data": []
+        }
+      ]
+    }
+  }
+]
